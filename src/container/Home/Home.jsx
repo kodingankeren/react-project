@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import './Home.css';
-import BlogList from '../../component/BlogList/BlogList';
+import Produk from '../../container/Produk/Produk';
 class Home extends Component {
   render() {
     return (
       <main>
-        <BlogList judul="Si Bolang" deskripsi="Bocah Layang-layang" />
-        <BlogList judul="Si Golang" deskripsi="Ngoding Golang" />
-        <BlogList judul="Si Rembes" deskripsi=" Gak Tau Adus" />
-        <BlogList />
+        <Produk judul="Si Bolang" deskripsi="Bocah Layang-layang" />
+        <Produk judul="Si Golang" deskripsi="Ngoding Golang" />
+        <Produk judul="Si Rembes" deskripsi=" Gak Tau Adus" />
+        <Produk />
       </main>
     );
   }
