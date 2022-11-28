@@ -1,13 +1,12 @@
 import React, { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 
-import App from './App';
-import BlogList from './component/BlogList/BlogList';
+import Home from './container/Home/Home';
 const rootElement = document.getElementById('root');
 const root = createRoot(rootElement);
 
 root.render(
-  <StrictMode>
-    <BlogList />
-  </StrictMode>
+  <div>
+    <Home />
+  </div>
 );
