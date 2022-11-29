@@ -31,8 +31,8 @@ class Produk extends Component {
   };
   render() {
     return (
-      <div>
-        <h1>Produk</h1>
+      <div className="mb-3">
+        <b>{this.props.title}</b>
         <div>Qty : {this.state.qty}</div>
         <button onClick={this.handleMinus}>-</button>
         {/* <input type="text" /> */}

@@ -4,7 +4,17 @@ import Produk from '../../container/Produk/Produk';
 class Home extends Component {
   state = {
     cart: 0,
+    produk: [],
   };
+  componentDidMount() {
+    fetch('https://jsonplaceholder.typicode.com/posts')
+      .then((response) => response.json())
+      .then((json) => {
+        this.setState({
+          produk: json,
+        });
+      });
+  }
   addToCart = (qty, count) => {
     let new_value = 0;
     if (count == '+') {
@@ -21,9 +31,15 @@ class Home extends Component {
       <Fragment>
         <b>Cart : {this.state.cart}</b>
         <hr />
-        <Produk onQtyChange={(value, count) => this.addToCart(value, count)} />
-        <Produk onQtyChange={(value, count) => this.addToCart(value, count)} />
-        <Produk onQtyChange={(value, count) => this.addToCart(value, count)} />
+        {this.state.produk.map((produk) => {
+          return (
+            <Produk
+              key={produk.id}
+              title={produk.title}
+              onQtyChange={(value, count) => this.addToCart(value, count)}
+            />
+          );
+        })}
       </Fragment>
     );
   }
