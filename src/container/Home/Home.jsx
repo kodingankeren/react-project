@@ -6,9 +6,6 @@ class Home extends Component {
     return (
       <main>
         <Produk judul="Si Bolang" deskripsi="Bocah Layang-layang" />
-        <Produk judul="Si Golang" deskripsi="Ngoding Golang" />
-        <Produk judul="Si Rembes" deskripsi=" Gak Tau Adus" />
-        <Produk />
       </main>
     );
   }
