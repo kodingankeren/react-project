@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import axios from 'axios';
 import './Home.css';
 import Produk from '../../container/Produk/Produk';
 class Home extends Component {
@@ -13,6 +14,12 @@ class Home extends Component {
         this.setState({
           produk: json,
         });
+      });
+    axios
+      .get('https://jsonplaceholder.typicode.com/posts')
+      .then(function (response) {
+        // handle success
+        console.log(response);
       });
   }
   addToCart = (qty, count) => {
