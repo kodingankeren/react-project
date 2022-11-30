@@ -8,19 +8,19 @@ class Home extends Component {
     produk: [],
   };
   componentDidMount() {
-    fetch('https://jsonplaceholder.typicode.com/posts')
-      .then((response) => response.json())
-      .then((json) => {
-        this.setState({
-          produk: json,
-        });
+    // fetch('https://jsonplaceholder.typicode.com/posts')
+    //   .then((response) => response.json())
+    //   .then((json) => {
+    //     console.log(json)
+    //     // this.setState({
+    //     //   produk: json,
+    //     // });
+    //   });
+    axios.get('https://jsonplaceholder.typicode.com/posts').then((response) => {
+      this.setState({
+        produk: response.data,
       });
-    axios
-      .get('https://jsonplaceholder.typicode.com/posts')
-      .then(function (response) {
-        // handle success
-        console.log(response);
-      });
+    });
   }
   addToCart = (qty, count) => {
     let new_value = 0;
