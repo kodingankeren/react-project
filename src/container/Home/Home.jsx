@@ -3,28 +3,34 @@ import {
   createBrowserRouter,
   RouterProvider,
   Route,
-} from "react-router-dom";
+  Link,
+  Outlet,
+} from 'react-router-dom';
 import axios from 'axios';
 import './Home.css';
 import HalamanDepan from '../../pages/HalamanDepan/HalamanDepan';
 import Kontak from '../../pages/Kontak/Kontak';
 import Profile from '../../pages/Profile/Profile';
+import Navbar from '../../container/Navbar/Navbar';
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <HalamanDepan />,
   },
   {
-    path: "/kontak",
+    path: '/kontak',
     element: <Kontak />,
   },
 ]);
 class Home extends Component {
   render() {
-    return <Fragment>
-      <RouterProvider router={router} />
-    </Fragment>;
+    return (
+      <Fragment>
+        <Navbar />
+        <RouterProvider router={router} />
+      </Fragment>
+    );
   }
 }
 
