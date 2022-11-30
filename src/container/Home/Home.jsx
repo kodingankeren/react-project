@@ -1,54 +1,30 @@
 import React, { Component, Fragment } from 'react';
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Route,
+} from "react-router-dom";
 import axios from 'axios';
 import './Home.css';
-import Produk from '../../container/Produk/Produk';
+import HalamanDepan from '../../pages/HalamanDepan/HalamanDepan';
+import Kontak from '../../pages/Kontak/Kontak';
+import Profile from '../../pages/Profile/Profile';
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <HalamanDepan />,
+  },
+  {
+    path: "/kontak",
+    element: <Kontak />,
+  },
+]);
 class Home extends Component {
-  state = {
-    cart: 0,
-    produk: [],
-  };
-  componentDidMount() {
-    // fetch('https://jsonplaceholder.typicode.com/posts')
-    //   .then((response) => response.json())
-    //   .then((json) => {
-    //     console.log(json)
-    //     // this.setState({
-    //     //   produk: json,
-    //     // });
-    //   });
-    axios.get('https://jsonplaceholder.typicode.com/posts').then((response) => {
-      this.setState({
-        produk: response.data,
-      });
-    });
-  }
-  addToCart = (qty, count) => {
-    let new_value = 0;
-    if (count == '+') {
-      new_value = this.state.cart + qty;
-    } else if (count == '-') {
-      new_value = this.state.cart - qty;
-    }
-    this.setState({
-      cart: new_value,
-    });
-  };
   render() {
-    return (
-      <Fragment>
-        <b>Cart : {this.state.cart}</b>
-        <hr />
-        {this.state.produk.map((produk) => {
-          return (
-            <Produk
-              key={produk.id}
-              title={produk.title}
-              onQtyChange={(value, count) => this.addToCart(value, count)}
-            />
-          );
-        })}
-      </Fragment>
-    );
+    return <Fragment>
+      <RouterProvider router={router} />
+    </Fragment>;
   }
 }
 
